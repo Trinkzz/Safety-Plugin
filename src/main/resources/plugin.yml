@@ -1,0 +1,4 @@
+name: Safety
+version: '${project.version}'
+main: main.safety.Safety
+api-version: '1.20'
