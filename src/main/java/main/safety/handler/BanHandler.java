@@ -22,17 +22,15 @@ public class BanHandler implements Listener {
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
-        Bukkit.getLogger().info("Block placed event triggered");
-
         Material placedBlockType = event.getBlock().getType();
-
+        if(event.getPlayer().isOp()){
+            return;
+        }
         if (placedBlockType == Material.BEDROCK ||
                 placedBlockType == Material.BARRIER ||
                 placedBlockType == Material.COMMAND_BLOCK ||
                 placedBlockType == Material.SPAWNER) {
-
             Bukkit.getLogger().info(placedBlockType + " placed");
-
             Player player = event.getPlayer();
             BanList banlist = Bukkit.getBanList(BanList.Type.NAME);
             Date now = new Date();
